@@ -1,3 +1,11 @@
+"use client";
+
+import TopBar from "./_components/TopBar";
+
 export default function Home() {
-  return <div className="text-2xl font-semibold text-primary">HomePage</div>;
+  return (
+    <>
+      <TopBar isLoggedIn hasNewNotice />
+    </>
+  );
 }
