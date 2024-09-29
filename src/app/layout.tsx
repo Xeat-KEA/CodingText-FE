@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+// PrimeReact 초기 설정
+import { PrimeReactProvider } from "primereact/api";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
   display: "swap",
@@ -21,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${pretendard.variable}`}>
-      <body className={`${pretendard.className}`}>{children}</body>
+      <body className={`${pretendard.className}`}>
+        <PrimeReactProvider>{children}</PrimeReactProvider>
+      </body>
     </html>
   );
 }

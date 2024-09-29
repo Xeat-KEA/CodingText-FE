@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useState } from "react";
 import { ITopBar } from "../_interfaces/interfaces";
 import { NoticeIcon, LogoIcon } from "./Icons";
@@ -42,8 +44,8 @@ export default function TopBar({ isLoggedIn, isCodingPage }: ITopBar) {
   return (
     <nav className="fixed w-full h-16 bg-white border-b border-border-1 flex justify-center">
       <div
-        className={`relative w-full flex justify-between px-12 ${
-          !isCodingPage && "max-w-[1200px]"
+        className={`relative w-full flex justify-between ${
+          !isCodingPage ? "max-w-[1200px] px-12" : "px-6"
         }`}
       >
         {/* 탑바 좌측 요소 */}
