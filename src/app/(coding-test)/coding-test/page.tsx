@@ -1,7 +1,7 @@
 "use client";
 
 import { Splitter, SplitterPanel } from "primereact/splitter";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   CODING_BUTTONS,
   CODING_TAB_BAR_MENU,
@@ -9,6 +9,7 @@ import {
 } from "../_constants/constants";
 import CodeEditor from "../_components/CodeEditor";
 import ChatInput from "../_components/ChatInput";
+import TabBar from "@/app/_components/TabBar";
 
 export default function CodingTestPage() {
   // 현재 선택된 코딩 메뉴 탭
@@ -17,7 +18,10 @@ export default function CodingTestPage() {
   const [hasSolved, setHasSolved] = useState(false);
 
   return (
-    <Splitter className="w-full h-screen pt-16">
+    <Splitter
+      className="w-full h-screen pt-16 flex"
+      onResizeEnd={(event) => console.log("hi")}
+    >
       {/* 채팅창 공간 */}
       <SplitterPanel className="bg-bg-1 flex flex-col">
         {/* 메세지 표시 공간 */}
@@ -27,7 +31,7 @@ export default function CodingTestPage() {
               key={index}
               className={`bubble ${
                 chat.role === "gpt"
-                  ? "bg-white"
+                  ? "bg-white text-black"
                   : "bg-primary text-white font-bold self-end"
               }`}
             >
@@ -43,35 +47,13 @@ export default function CodingTestPage() {
       {/* 코드 관련 공간 */}
       <SplitterPanel className="flex flex-col px-6 py-8 gap-4">
         {/* 코드 에디터 */}
-        <div className="grow border border-border-2 rounded-2xl overflow-hidden">
+        <div className="flex h-full rounded-2xl overflow-hidden">
           <CodeEditor />
         </div>
         {/* 탭바 */}
-        <div className="w-full h-[52px] flex justify-between border-b border-border-2">
-          {/* 탭 버튼 */}
-          <nav className="flex">
-            {CODING_TAB_BAR_MENU.map((el, index) => (
-              <div
-                key={index}
-                className={`pr-4 text-sm cursor-pointer ${
-                  index !== 0 && "pl-4"
-                }`}
-                onClick={() => setSelectedTab(el)}
-              >
-                <span
-                  className={`flex items-center h-full ${
-                    el === selectedTab &&
-                    "font-bold border-b-[3px] border-primary pt-[3px]"
-                  }`}
-                >
-                  {el}
-                </span>
-              </div>
-            ))}
-          </nav>
-        </div>
+        <TabBar menuList={CODING_TAB_BAR_MENU} />
         {/* 컴파일러 / 메모장 */}
-        <div className="w-full h-[200px] border border-border-2 rounded-2xl"></div>
+        <div className="w-full h-[200px] shrink-0 border border-border-2 rounded-2xl"></div>
         {/* 구분선 */}
         <div className="division" />
         {/* 하단 버튼 */}

@@ -7,7 +7,7 @@ export default function ChatInput() {
         <SettingIcon />
       </button>
       <input
-        className="outline-none grow"
+        className="outline-none grow text-black"
         type="text"
         placeholder="AI에게 궁금한 점을 자유롭게 질문해보세요!"
       />

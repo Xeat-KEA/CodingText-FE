@@ -9,11 +9,6 @@ body {
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
-/* 전역 설정 */
-* {
-  @apply text-black box-border whitespace-nowrap;
-}
-
 /* input 태그의 outline 제거 */
 input {
   outline: none;
@@ -59,12 +54,12 @@ input {
 
   /* 버튼 추상화 */
   .btn {
-    @apply px-4 py-3 text-xs;
+    @apply px-4 py-3 text-xs whitespace-nowrap;
   }
 
   /* 기본 버튼 */
   .btn-default {
-    @apply btn border border-border-2 rounded-lg;
+    @apply btn border text-black border-border-2 rounded-lg;
   }
 
   /* Primary 색상 버튼 */
@@ -78,7 +73,7 @@ input {
 
   /* 탑바 메뉴 버튼 */
   .top-bar-menu-btn {
-    @apply flex items-center px-2 h-full cursor-pointer;
+    @apply flex items-center px-2 h-full cursor-pointer text-base font-semibold text-black whitespace-nowrap;
   }
 
   /* 프로필 메뉴 버튼 */

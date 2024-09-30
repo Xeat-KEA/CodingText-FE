@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@monaco-editor/react": "^4.6.0",
+    "@uiw/codemirror-extensions-basic-setup": "^4.23.3",
+    "@uiw/codemirror-extensions-langs": "^4.23.3",
+    "@uiw/codemirror-theme-xcode": "^4.23.3",
+    "@uiw/react-codemirror": "^4.23.3",
     "next": "14.2.13",
     "primereact": "^10.8.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
     "@types/node": "^20",

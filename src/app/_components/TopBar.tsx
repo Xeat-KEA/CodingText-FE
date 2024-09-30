@@ -52,7 +52,7 @@ export default function TopBar({ isLoggedIn, isCodingPage }: ITopBar) {
         <div className="flex items-center gap-14">
           <LogoIcon />
           {/* 메뉴 */}
-          <ul className="flex h-full items-center gap-2 text-base font-semibold">
+          <ul className="flex h-full items-center gap-2">
             {TOP_BAR_MENU.map((el, index) => {
               if (isLoggedIn) {
                 // 로그인 했을 시 모든 메뉴 표시
@@ -131,14 +131,14 @@ export default function TopBar({ isLoggedIn, isCodingPage }: ITopBar) {
             {/* 사용자 정보 */}
             <div className="flex flex-col gap-[2px] px-6 py-4">
               <span className="text-body text-xs font-bold">Junior</span>
-              <span className="text-base font-bold">사용자123</span>
+              <span className="text-base font-bold text-black">사용자123</span>
             </div>
             {/* 프로필 메뉴 */}
             {PROFILE_MENU.map((el, index) => (
               <span
                 key={index}
                 className={`profile-popup-menu ${
-                  el.content === "로그아웃" && "text-red"
+                  el.content === "로그아웃" ? "text-red" : "text-black"
                 }`}
                 onClick={() => router.push(el.url)}
               >

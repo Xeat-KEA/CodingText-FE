@@ -7,3 +7,7 @@ export interface ITopBar {
 export interface ISearchBar {
   isSmall?: boolean;
 }
+
+export interface ITabBar {
+  menuList: string[];
+}
