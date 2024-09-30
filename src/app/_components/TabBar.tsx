@@ -1,13 +1,13 @@
-import { useRecoilState } from "recoil";
-import { ITabBar } from "../_interfaces/interfaces";
-import { selectedTabAtom } from "../atoms";
 import { useEffect } from "react";
+import { ITabBar } from "../_interfaces/interfaces";
+import { useTabStore } from "../stores";
 
 export default function TabBar({ menuList }: ITabBar) {
-  const [selectedTab, setSelectedTab] = useRecoilState(selectedTabAtom);
+  // 전역 변수
+  const { tab, setTab } = useTabStore();
 
   useEffect(() => {
-    setSelectedTab(menuList[0]);
+    setTab(menuList[0]);
   }, []);
 
   return (
@@ -18,12 +18,11 @@ export default function TabBar({ menuList }: ITabBar) {
           <div
             key={index}
             className={`pr-4 cursor-pointer ${index !== 0 && "pl-4"}`}
-            onClick={() => setSelectedTab(el)}
+            onClick={() => setTab(el)}
           >
             <span
               className={`flex items-center text-sm text-black  h-full ${
-                el === selectedTab &&
-                "font-bold border-b-[3px] border-primary pt-[3px]"
+                el === tab && "font-bold border-b-[3px] border-primary pt-[3px]"
               }`}
             >
               {el}

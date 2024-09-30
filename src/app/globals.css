@@ -10,7 +10,8 @@ body {
 }
 
 /* input 태그의 outline 제거 */
-input {
+input,
+textarea {
   outline: none;
 }
 

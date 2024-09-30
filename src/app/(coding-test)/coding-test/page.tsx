@@ -1,7 +1,7 @@
 "use client";
 
 import { Splitter, SplitterPanel } from "primereact/splitter";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import {
   CODING_BUTTONS,
   CODING_TAB_BAR_MENU,
@@ -10,10 +10,12 @@ import {
 import CodeEditor from "../_components/CodeEditor";
 import ChatInput from "../_components/ChatInput";
 import TabBar from "@/app/_components/TabBar";
+import { useTabStore } from "@/app/stores";
 
 export default function CodingTestPage() {
-  // 현재 선택된 코딩 메뉴 탭
-  const [selectedTab, setSelectedTab] = useState(CODING_TAB_BAR_MENU[0]);
+  // 현재 탭 전역 변수
+  const { tab } = useTabStore();
+
   // 문제 정답 여부
   const [hasSolved, setHasSolved] = useState(false);
 
@@ -53,7 +55,16 @@ export default function CodingTestPage() {
         {/* 탭바 */}
         <TabBar menuList={CODING_TAB_BAR_MENU} />
         {/* 컴파일러 / 메모장 */}
-        <div className="w-full h-[200px] shrink-0 border border-border-2 rounded-2xl"></div>
+        <div className="w-full h-[200px] flex shrink-0 border border-border-2 rounded-2xl overflow-hidden">
+          {/* 컴파일러 */}
+          <div></div>
+          {/* 메모장 */}
+          <textarea
+            className={`${
+              tab === "메모장" ? "block" : "hidden"
+            } w-full h-full px-4 py-3 text-black`}
+          />
+        </div>
         {/* 구분선 */}
         <div className="division" />
         {/* 하단 버튼 */}

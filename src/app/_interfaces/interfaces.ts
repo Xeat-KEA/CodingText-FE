@@ -11,3 +11,9 @@ export interface ISearchBar {
 export interface ITabBar {
   menuList: string[];
 }
+
+// 전역 변수 관련 Interface
+export interface ITabStore {
+  tab: string;
+  setTab: (newTab: string) => void;
+}
