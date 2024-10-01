@@ -7,12 +7,12 @@ export default function CodeEditor() {
   const [val, setVal] = useState("");
   return (
     <ReactCodeMirror
+      className="w-full"
       value={val}
       onChange={(e) => {
         console.log(e);
         setVal(val);
       }}
-      style={{ width: "100%", overflow: "scroll" }}
       basicSetup={{ autocompletion: false }}
       theme={xcodeDark}
       extensions={[

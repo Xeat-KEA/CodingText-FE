@@ -7,10 +7,9 @@ import SearchBar from "./SearchBar";
 import { PROFILE_MENU, TOP_BAR_MENU } from "../_constants/constants";
 import { useRouter } from "next/navigation";
 import { useOutsideClick } from "../_hooks/useOutsideClick";
+import Link from "next/link";
 
 export default function TopBar({ isLoggedIn, isCodingPage }: ITopBar) {
-  const router = useRouter();
-
   // 팝업 상태 관리 state
   const [isPopUpOpen, setIsPopUpOpen] = useState({
     notice: false,
@@ -42,7 +41,7 @@ export default function TopBar({ isLoggedIn, isCodingPage }: ITopBar) {
   );
 
   return (
-    <nav className="fixed w-full h-16 bg-white border-b border-border-1 flex justify-center">
+    <nav className="fixed w-full h-16 bg-white border-b border-border-1 flex justify-center z-50">
       <div
         className={`relative w-full flex justify-between ${
           !isCodingPage ? "max-w-[1200px] px-12" : "px-6"
@@ -50,32 +49,30 @@ export default function TopBar({ isLoggedIn, isCodingPage }: ITopBar) {
       >
         {/* 탑바 좌측 요소 */}
         <div className="flex items-center gap-14">
-          <LogoIcon />
+          <Link href="/">
+            <LogoIcon />
+          </Link>
           {/* 메뉴 */}
           <ul className="flex h-full items-center gap-2">
             {TOP_BAR_MENU.map((el, index) => {
               if (isLoggedIn) {
                 // 로그인 했을 시 모든 메뉴 표시
                 return (
-                  <li
-                    key={index}
-                    className="top-bar-menu-btn"
-                    onClick={() => router.push(el.url)}
-                  >
+                  <Link key={index} href={el.url} className="top-bar-menu-btn">
                     {el.content}
-                  </li>
+                  </Link>
                 );
               } else {
                 // 로그인 하지 않을 시 첫 번째 메뉴만 표시
                 if (index === 0) {
                   return (
-                    <li
+                    <Link
                       key={index}
+                      href={el.url}
                       className="top-bar-menu-btn"
-                      onClick={() => router.push(el.url)}
                     >
                       {el.content}
-                    </li>
+                    </Link>
                   );
                 }
               }
@@ -117,7 +114,7 @@ export default function TopBar({ isLoggedIn, isCodingPage }: ITopBar) {
         {isPopUpOpen.notice && (
           <div
             ref={noticePopupRef}
-            className="absolute right-0 top-[calc(100%+8px)] w-[396px] h-[300px] flex flex-col rounded-lg shadow-1 divide-y divide-border-1"
+            className="absolute bg-white right-0 top-[calc(100%+8px)] w-[396px] h-[300px] flex flex-col rounded-lg shadow-1 divide-y divide-border-1"
           >
             {/* 알림 내용 추가 필요 */}
           </div>
@@ -126,7 +123,7 @@ export default function TopBar({ isLoggedIn, isCodingPage }: ITopBar) {
         {isPopUpOpen.profile && (
           <div
             ref={profilePopupRef}
-            className="absolute right-0 top-[calc(100%+8px)] w-[160px] flex flex-col rounded-lg shadow-1 divide-y divide-border-1"
+            className="absolute bg-white right-0 top-[calc(100%+8px)] w-[160px] flex flex-col rounded-lg shadow-1 divide-y divide-border-1"
           >
             {/* 사용자 정보 */}
             <div className="flex flex-col gap-[2px] px-6 py-4">
@@ -135,15 +132,15 @@ export default function TopBar({ isLoggedIn, isCodingPage }: ITopBar) {
             </div>
             {/* 프로필 메뉴 */}
             {PROFILE_MENU.map((el, index) => (
-              <span
+              <Link
                 key={index}
+                href={el.url}
                 className={`profile-popup-menu ${
                   el.content === "로그아웃" ? "text-red" : "text-black"
                 }`}
-                onClick={() => router.push(el.url)}
               >
                 {el.content}
-              </span>
+              </Link>
             ))}
           </div>
         )}

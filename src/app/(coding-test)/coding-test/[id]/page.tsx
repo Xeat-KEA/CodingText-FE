@@ -1,16 +1,16 @@
 "use client";
 
+import { useTabStore } from "@/app/stores";
 import { Splitter, SplitterPanel } from "primereact/splitter";
 import { useState } from "react";
 import {
   CODING_BUTTONS,
   CODING_TAB_BAR_MENU,
   dummyChats,
-} from "../_constants/constants";
-import CodeEditor from "../_components/CodeEditor";
-import ChatInput from "../_components/ChatInput";
+} from "../../_constants/constants";
+import ChatInput from "../../_components/ChatInput";
+import CodeEditor from "../../_components/CodeEditor";
 import TabBar from "@/app/_components/TabBar";
-import { useTabStore } from "@/app/stores";
 
 export default function CodingTestPage() {
   // 현재 탭 전역 변수
