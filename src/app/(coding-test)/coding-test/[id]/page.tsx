@@ -11,6 +11,7 @@ import {
 import ChatInput from "../../_components/ChatInput";
 import CodeEditor from "../../_components/CodeEditor";
 import TabBar from "@/app/_components/TabBar";
+import { PROGRAMMING_LANGUAGES } from "@/app/_constants/constants";
 
 export default function CodingTestPage() {
   // 현재 탭 전역 변수
@@ -53,7 +54,10 @@ export default function CodingTestPage() {
           <CodeEditor />
         </div>
         {/* 탭바 */}
-        <TabBar menuList={CODING_TAB_BAR_MENU} />
+        <TabBar
+          menuList={CODING_TAB_BAR_MENU}
+          dropDownList={PROGRAMMING_LANGUAGES}
+        />
         {/* 컴파일러 / 메모장 */}
         <div className="w-full h-[200px] flex shrink-0 border border-border-2 rounded-2xl overflow-hidden">
           {/* 컴파일러 */}

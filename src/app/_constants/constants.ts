@@ -11,3 +11,6 @@ export const PROFILE_MENU = [
   { content: "설정", url: "/" },
   { content: "로그아웃", url: "/" },
 ];
+
+// 프로그래밍 언어 목록
+export const PROGRAMMING_LANGUAGES = ["java", "python", "javascript", "c"];

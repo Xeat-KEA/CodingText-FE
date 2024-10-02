@@ -10,6 +10,7 @@ export interface ISearchBar {
 
 export interface ITabBar {
   menuList: string[];
+  dropDownList?: string[];
 }
 
 export interface IToggleBtn {
@@ -18,10 +19,19 @@ export interface IToggleBtn {
   onClick: () => void;
 }
 
+export interface IDropDown {
+  isSmall?: boolean;
+  selection: string;
+  onSelectionClick: (selected: string) => void;
+  list: string[];
+}
+
 // 전역 변수 관련 Interface
 export interface ITabStore {
   tab: string;
   setTab: (newTab: string) => void;
+  selection: string;
+  setSelection: (newSelection: string) => void;
 }
 
 export interface IChatStore {

@@ -1,19 +1,22 @@
 import { useEffect } from "react";
 import { ITabBar } from "../_interfaces/interfaces";
 import { useTabStore } from "../stores";
+import DropDown from "./Dropdown";
 
-export default function TabBar({ menuList }: ITabBar) {
+export default function TabBar({ menuList, dropDownList }: ITabBar) {
   // 전역 변수
-  const { tab, setTab } = useTabStore();
+  const { tab, setTab, selection, setSelection } = useTabStore();
 
+  // 전역 변수 초기값 설정
   useEffect(() => {
     setTab(menuList[0]);
+    dropDownList && setSelection(dropDownList[0]);
   }, []);
 
   return (
-    <div className="w-full h-[52px] flex justify-between shrink-0 border-b border-border-2">
+    <div className="w-full h-[52px] flex justify-between items-center shrink-0 border-b border-border-2">
       {/* 탭 버튼 */}
-      <nav className="flex">
+      <nav className="flex h-full">
         {menuList.map((el, index) => (
           <div
             key={index}
@@ -30,6 +33,17 @@ export default function TabBar({ menuList }: ITabBar) {
           </div>
         ))}
       </nav>
+      {/* 드롭다운 */}
+      {dropDownList && (
+        <div className="w-[120px]">
+          <DropDown
+            selection={selection}
+            onSelectionClick={(selected) => setSelection(selected)}
+            list={dropDownList}
+            isSmall
+          />
+        </div>
+      )}
     </div>
   );
 }

@@ -1,9 +1,6 @@
 // 코딩 페이지 탭 전환 바
 export const CODING_TAB_BAR_MENU = ["컴파일러", "메모장"];
 
-// 프로그래밍 언어 목록
-export const PROGRAMMING_LANGUAGE = ["java", "python", "javascript", "c"];
-
 // 코딩 페이지 하단 버튼 목록
 export const CODING_BUTTONS = [
   { content: "글 쓰기", url: "/" },

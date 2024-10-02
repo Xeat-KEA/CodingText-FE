@@ -16,5 +16,7 @@ export const useChatStore = create<IChatStore>((set) => ({
 // 탭바 메뉴 관련 전역변수
 export const useTabStore = create<ITabStore>((set) => ({
   tab: "", // 현재 선택된 탭
-  setTab: (newTab: string) => set({ tab: newTab }),
+  setTab: (newTab) => set({ tab: newTab }),
+  selection: "", // 현재 선택된 Dropdown 항목,
+  setSelection: (newSelection) => set({ selection: newSelection }),
 }));
