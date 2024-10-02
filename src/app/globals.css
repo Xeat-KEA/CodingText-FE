@@ -9,9 +9,10 @@ body {
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
-/* 텍스트 관련 전역 설정 */
-* {
-  @apply text-black box-border;
+/* input 태그의 outline 제거 */
+input,
+textarea {
+  outline: none;
 }
 
 @layer utilities {
@@ -42,18 +43,47 @@ body {
     @apply w-full max-w-[1200px] px-12;
   }
 
-  /* 작은 버튼 (Primary) */
+  /* 1px 가로줄 */
+  .division {
+    @apply w-full h-[1px] bg-border-2;
+  }
+
+  /* 작은 버튼-Primary (탑바 로그인 버튼 등) */
   .sm-btn-primary {
     @apply px-4 py-2 bg-primary text-xs text-white font-bold;
   }
 
+  /* 버튼 추상화 */
+  .btn {
+    @apply px-4 py-3 text-xs whitespace-nowrap;
+  }
+
+  /* 기본 버튼 */
+  .btn-default {
+    @apply btn border text-black border-border-2 rounded-lg;
+  }
+
+  /* Primary 색상 버튼 */
+  .btn-primary {
+    @apply btn bg-primary rounded-lg text-white font-bold;
+  }
+
+  .btn-disabled {
+    @apply btn bg-bg-1 border border-border-2 rounded-lg text-disabled;
+  }
+
   /* 탑바 메뉴 버튼 */
   .top-bar-menu-btn {
-    @apply flex items-center px-2 h-full cursor-pointer;
+    @apply flex items-center px-2 h-full cursor-pointer text-base font-semibold text-black whitespace-nowrap;
   }
 
   /* 프로필 메뉴 버튼 */
   .profile-popup-menu {
     @apply flex items-center px-4 h-8 text-xs cursor-pointer;
+  }
+
+  /* 말풍선 스타일링 */
+  .bubble {
+    @apply flex w-fit px-3 py-3 rounded-3xl shadow-1;
   }
 }

@@ -80,3 +80,18 @@ export function NoticeIcon() {
     </svg>
   );
 }
+
+// 더보기 아이콘
+export function ShowMoreIcon() {
+  return (
+    <svg
+      width="16"
+      height="17"
+      viewBox="0 0 16 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M12 6.5L8 10.5L4 6.5" stroke="#222222" stroke-width="0.666667" />
+    </svg>
+  );
+}
